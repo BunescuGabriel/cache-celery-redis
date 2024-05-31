@@ -1,0 +1,29 @@
+<!-- about.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/about.css' %}">
+</head>
+<body>
+    <header>
+        <h1>About</h1>
+        {% include 'header.html' %}
+    </header>
+
+    <div>
+        <p>Producător: </p>
+        <p class="details-descriere">Descriere:</p>
+        <p class="item-price">Price: €</p>
+    </div>
+    
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

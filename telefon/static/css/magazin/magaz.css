@@ -1,0 +1,70 @@
+.container-telefon {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.phone {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.details {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.images {
+    flex: 1;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-gallery img {
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 60%; /* Imaginea va ocupă întotdeauna 100% din lățimea containerului ei */
+    height: auto; /* Menținem proporțiile imaginii */
+    max-width: 100%; /* Limităm lățimea maximă a imaginii la 100% */
+    max-height: 200px; /* Setăm înălțimea maximă a imaginii la 200px */
+    object-fit: cover; /* Asigurăm că imaginea este întotdeauna completă, fără să fie distorsionată */
+}
+
+
+.button-adaug {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.button-adaug:hover {
+    background-color: #0056b3;
+}
+
+
+
+.adauga-container{
+    margin-left: 50px;
+}
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Contact</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/contact/contact.css' %}">
+</head>
+<body>
+    <header>
+        <h1>List of Laptop</h1>
+        {% include 'header.html' %}
+    </header>
+
+    <div class="container-contact"> <!-- Actualizează clasa la container -->
+        <h2 class="contact-title">Create Contact</h2>
+        <form method="post" class="contact-form"> <!-- Actualizează clasa la form -->
+            <div class="contact-form-group">
+                <label for="name" class="contact-label">Name:</label>
+                <input type="text" id="name" name="name" class="contact-input" required>
+            </div>
+            <div class="contact-form-group">
+                <label for="email" class="contact-label">Email:</label>
+                <input type="email" id="email" name="email" class="contact-input" required>
+            </div>
+            <button type="submit" class="contact-btn">Save</button>
+        </form>
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

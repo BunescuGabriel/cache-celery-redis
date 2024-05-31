@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succes</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/success.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Plata a fost efectuată cu succes!</h1>
+        {% include 'header.html' %}
+    </header>
+    <div class="content">
+        <p>Vă mulțumim pentru cumpărături!</p>
+        <a href="/">Înapoi la pagina principală</a>
+    </div>
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+</body>
+</html>

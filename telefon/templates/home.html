@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Phones</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/magaz.css' %}">
+    <script src="{% static 'js/add_cart.js' %}"></script>
+
+</head>
+<body>
+    <header>
+        <h1>List of Phones</h1>
+        {% include 'header.html' %}
+    </header>
+
+    <div class="container-telefon">
+        {% for telefon in telefons %}
+        <div class="phone">
+            <div class="details">
+                <h3>{{ telefon.model }}</h3>
+                <p>Producător: {{ telefon.producator }}</p>
+                <p>Procesor: {{ telefon.procesor }}</p>
+                <p>Descriere: {{ telefon.descriere }}</p>
+                <p>Price: {{ telefon.price }} €</p>
+            </div>
+            <div class="images">
+                {% if telefon.images_set.all %}
+                <div class="image-gallery">
+                    {% for image in telefon.images_set.all %}
+                        <img src="{{ image.image.url }}" alt="Imagine Telefon">
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p>Nu există imagini disponibile pentru acest telefon.</p>
+                {% endif %}
+                <ul>
+                    <button class="button-adaug" data-quantity="1" onclick="addToCart({{ telefon.id }}, this)">Adauga in cos</button>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+</body>
+</html>

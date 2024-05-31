@@ -1,0 +1,266 @@
+.container-general {
+    display: flex;
+    padding: 20px;
+    background-color: #ebeaea;
+}
+
+.container-cos {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+}
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.container-cos .item {
+    padding: 20px;
+    display: flex;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    max-width: 100%;
+    background-color: #f1f1f1;
+}
+
+.container-cos .details {
+    flex: 1;
+    padding: 10px;
+}
+
+.details-descriere{
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;   
+}
+
+.container-cos .images {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+
+
+.image-gallery img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+}
+
+.button-delete {
+    height: 40px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 22px;
+    color: #0a0101;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-delete:hover {
+    background-color: #c90909;
+}
+
+.button-details {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    color: #070707;
+    background-color: #d8dadc;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-details:hover {
+    background-color: #acadae;
+}
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.counter-value {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+
+.Selectet {
+    display: flex;
+    align-items: center; 
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.select-all {
+    margin-left: 30px;
+    color: #030303;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.select-all:hover {
+    border-color: #ff0000;
+}
+
+
+.select-all.active {
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+
+
+
+
+.Selectet p {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Stiluri pentru caseta de selectare */
+.item-checkbox {
+    width: 30px; /* Lățime */
+    height: 30px; /* Înălțime */
+    -webkit-appearance: none; /* Elimină stilurile implicite ale browserului */
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid #000; /* Border */
+    border-radius: 50%; /* Forma circulară */
+    cursor: pointer; /* Cursor pointer */
+    outline: none; /* Elimină conturul la focus */
+    transition: background-color 0.3s, border-color 0.3s; /* Tranziție */
+    position: relative; /* Poziționare relativă pentru indicator */
+}
+
+/* Stiluri pentru caseta de selectare când este bifată */
+.item-checkbox:checked {
+    background-color: #ff0000; /* Culoarea de fundal atunci când este bifată */
+    border-color: #ff0000; /* Culoarea border-ului atunci când este bifată */
+}
+
+/* Stiluri pentru indicatorul casetei de selectare */
+.item-checkbox::after {
+    content: ''; /* Conținut gol */
+    width: 10px; /* Lățime */
+    height: 10px; /* Înălțime */
+    border-radius: 50%; /* Forma circulară */
+    background-color: white; /* Culoare indicator */
+    position: absolute; /* Poziționare absolută */
+    top: 50%; /* Afișează la jumătatea înălțimii */
+    left: 50%; /* Afișează la jumătatea lățimii */
+    transform: translate(-50%, -50%) scale(0); /* Ascunde inițial indicatorul */
+    transition: transform 0.3s; /* Tranziție */
+}
+
+/* Stiluri pentru caseta de selectare când este hover */
+.item-checkbox:hover {
+    border-color: #ff0000; /* Schimbă culoarea border-ului la hover */
+}
+
+/* Stiluri pentru caseta de selectare când este activă */
+.item-checkbox:active {
+    background-color: #ff0000; /* Schimbă complet culoarea la apăsare */
+}
+
+/* Stiluri pentru caseta de selectare când este bifată - afișează indicatorul */
+.item-checkbox:checked::after {
+    transform: translate(-50%, -50%) scale(1); /* Afișează indicatorul */
+}
+
+
+
+.Payment {
+    width: 300px;
+    height: 520px;
+    flex-basis:30%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.Detali-plata {
+    background-color: #f9f9f9; /* Fundal deschis pentru contrast */
+    border: 1px solid #ddd; /* Bordură subtilă pentru delimitare */
+    border-radius: 10px; /* Colțuri rotunjite pentru un aspect modern */
+    padding: 20px; /* Spațiere internă pentru a nu părea înghesuit */
+    width: 400px; /* Lățime fixă pentru un aspect consistent */
+    margin: 20px auto; /* Centrare pe orizontală */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbra pentru un efect 3D subtil */
+}
+
+.Detali-plata p {
+    font-family: 'Arial', sans-serif; /* Font modern și ușor de citit */
+    color: #333; /* Text de culoare închisă pentru contrast */
+    margin: 10px 0; /* Spațiere între paragrafe */
+}
+
+.Detali-plata .titlu {
+    font-weight: bold; /* Text îngroșat pentru "Summary" */
+    font-size: 1.2em; /* Mărime mai mare pentru titlu */
+    text-align: center; /* Aliniere centrală a titlului */
+}
+
+.Detali-plata .b {
+    display: block; /* Face butonul să ocupe întreaga lățime disponibilă */
+    width: 100%; /* Lățime completă */
+    padding: 10px 0; /* Spațiere internă pentru buton */
+    margin: 20px auto 0 auto; /* Spațiu deasupra butonului și centrare pe orizontală */
+    background-color: #ed0808; /* Culoare de fundal albastră */
+    color: #fff; /* Culoare albă pentru textul butonului */
+    border: none; /* Fără bordură */
+    border-radius: 30px; /* Colțuri rotunjite pentru buton */
+    font-size: 1em; /* Mărime font */
+    cursor: pointer; /* Cursor pointer pentru a indica că este un buton */
+    transition: background-color 0.3s; /* Tranziție lină pentru schimbarea culorii */
+}
+
+.Detali-plata .b:hover {
+    background-color: #0056b3; /* Schimbarea culorii la hover */
+}
+
+.Payment .Cart-image {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.Payment .Cart-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

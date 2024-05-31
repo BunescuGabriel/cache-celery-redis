@@ -1,0 +1,59 @@
+/* Stilurile CSS pentru footer */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.news-item {
+    margin: 0 10px;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 26px;
+    transition: color 0.3s ease;
+}
+
+.news-item a:hover {
+    color: #ccc;
+}
+
+/* Stilurile pentru iconiță */
+.news-item a i {
+    font-size: 30px;
+}
+
+/* Stiluri pentru textul de drepturi de autor */
+footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+footer p a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer p a:hover {
+    color: #ccc;
+}

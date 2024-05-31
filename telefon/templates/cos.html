@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosul de Cumparaturi</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/cart.css' %}">
+    <script src="{% static 'js/delete_cart.js' %}"></script>
+    <script src="{% static 'js/payment_cart.js' %}"></script>
+</head>
+<body>
+    <header>
+        <h1>Cosul de Cumparaturi</h1>
+        {% include 'header.html' %}
+    </header>
+
+    <div class="container-general">
+        <div class="container-cos">
+            <div class="Selectet">
+                <button class="select-all" onclick="toggleSelectAllItems()"></button> 
+                <p>Selectează Toate</p>
+            </div>
+            {% if cart_items %}
+                <ul class="item-list">
+                    {% for item in cart_items %}
+                    {% comment %} <p>id: {{ item.id }}</p> {% endcomment %}
+                        <li class="item">
+                            {% comment %} <input type="checkbox" class="item-checkbox" onclick="updateTotalAndCount()"> {% endcomment %}
+                            <input type="checkbox" class="item-checkbox" onclick="updateTotalAndCount()" data-item-id="{{ item.id }}">
+
+                            <div class="details">
+                    
+                                <h3>{{ item.telefon.model }}</h3>
+                                {% comment %} <p>id: {{ item.telefon.id }}</p> {% endcomment %}
+                                <p>Producător: {{ item.telefon.producator }}</p>
+                                <p class="details-descriere">Descriere: {{ item.telefon.descriere }}</p>
+                                <p class="item-price">Price: {{ item.telefon.price }} €</p>
+                            </div>
+                            <div class="images">
+                                {% if item.telefon.images_set.all %}
+                                    <div class="image-gallery">
+                                        {% for image in item.telefon.images_set.all %}
+                                            <img src="{{ image.image.url }}" alt="Imagine Telefon">
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <p>Nu există imagini disponibile pentru acest telefon.</p>
+                                {% endif %}
+                            </div>
+                            <div class="counter-container">
+                                <button class="button-details" onclick="decrementCount(this)">-</button>
+                                <span class="counter-value">1</span>
+                                <button class="button-details" onclick="incrementCount(this)">+</button>
+                            </div>
+                            <button class="button-delete" onclick="deleteToCart({{ item.telefon.id }}, this)">X</button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Cosul este gol.</p>
+            {% endif %}
+        </div>
+
+        <div class="Payment">
+            <div class="Detali-plata">
+                <p class="titlu">Summary</p>
+                <p>Total: <span id="total-price">0</span> €</p>
+                <p>In lei: <span id="total-price-lei">0</span> lei</p>
+                <button class="b" id="checkout-button" onclick="checkout()">Checkout (0)</button>
+            </div>
+
+            <div class="Cart-image">
+                <img src="{% static 'css/card.png' %}" alt="Imagine  Modern">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
+        </footer>
+
+        
+ 
+</body>
+</html>

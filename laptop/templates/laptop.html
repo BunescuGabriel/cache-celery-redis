@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Phones</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/magaz.css' %}">
+    <script src="{% static 'js/add_cart.js' %}"></script>
+
+</head>
+<body>
+    <header>
+        <h1>List of Laptop</h1>
+        {% include 'header.html' %}
+    </header>
+
+    <div class="container-telefon">
+        {% for laptop in laptops %}
+        <div class="phone">
+            <div class="details">
+                <h3>{{ laptop.model }}</h3>
+                <p>Producător: {{ laptop.producator }}</p>
+                <p>Procesor: {{ laptop.procesor }}</p>
+                <p>Descriere: {{ laptop.descriere }}</p>
+                <p>Price: {{ laptop.price }} €</p>
+            </div>
+            <div class="images">
+                {% if laptop.image %}
+                <div class="image-gallery">
+                        <img src="{{ laptop.image.url }}" alt="Imagine laptop">
+                </div>
+                {% else %}
+                <p>Nu există imagini disponibile pentru acest laptop.</p>
+                {% endif %}
+                <ul>
+                    <button class="button-adaug" data-quantity="1" onclick="addToLaptopCart({{ laptop.id }}, this)">Adauga in cos</button>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
+
+</body>
+</html>
