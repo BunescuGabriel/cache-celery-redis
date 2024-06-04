@@ -195,21 +195,23 @@ EMAIL_HOST_PASSWORD = 'qrvh lgld hsbg bgwj'
    
 
 # redis related settings
-REDIS_HOST = 'redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com'
-REDIS_PORT = 10923
-REDIS_PASSWORD = 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd'
+# REDIS_HOST = 'redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com'
+# REDIS_PORT = 10923
+# REDIS_PASSWORD = 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd'
 
-REDIS_URL = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
+# REDIS_URL = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
 
-CELERY_BROKER_URL = REDIS_URL
-CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKEND = REDIS_URL
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_BROKER_URL = REDIS_URL
+# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+# CELERY_RESULT_BACKEND = REDIS_URL
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
 
-CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-CELERYD_POOL = 'solo'
+# CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+# CELERYD_POOL = 'solo'
+
+##############################################################
 
 ### redis star docker ##   docker run -d -p 6379:6379 redis
 
@@ -218,20 +220,21 @@ CELERYD_POOL = 'solo'
 #pentru a porni best 
 ### celery -A Magazin beat -l INFO 
 
+###############################################################
 # # redis related settings -- localhost
-# REDIS_HOST = '127.0.0.1'
-# REDIS_PORT = '6379'
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
 
-# # Construirea URL-ului cu utilizatorul implicit
-# REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+# Construirea URL-ului cu utilizatorul implicit
+REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
 
-# CELERY_BROKER_URL = REDIS_URL
-# CELERY_RESULT_BACKEND = REDIS_URL
-# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = REDIS_URL
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
-# CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-# # Set worker type to solo
-# CELERYD_POOL = 'solo'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+# Set worker type to solo
+CELERYD_POOL = 'solo'
