@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from Magazin.production import email, password
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,11 +137,10 @@ CACHES = {
         ##########
         
         # 'BACKEND': 'django_redis.cache.RedisCache',
-        #  # Adresa și portul Redis, precum și numărul bazei de date
-        # 'LOCATION': 'redis://redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com:10923/Free-db',
+        # 'LOCATION': 'redis://host:port/Free-db',
         # 'OPTIONS': {
         #     'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        #     'PASSWORD': 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd',  # Parola pentru autentificare
+        #     'PASSWORD': 'password',  # Parola pentru autentificare
         # }
     }
 }
@@ -198,32 +199,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_PORT = 587 
 EMAIL_USE_TLS = True 
-EMAIL_HOST_USER = 'gabibun100@gmail.com'  
-EMAIL_HOST_PASSWORD = 'qrvh lgld hsbg bgwj' 
+EMAIL_HOST_USER = email
+EMAIL_HOST_PASSWORD = password
    
-
-# redis related settings
-# REDIS_HOST = 'redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com'
-# REDIS_PORT = 10923
-# REDIS_PASSWORD = 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd'
-
-# REDIS_URL = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
-
-# CELERY_BROKER_URL = REDIS_URL
-# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-# CELERY_RESULT_BACKEND = REDIS_URL
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-
-# CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-# CELERYD_POOL = 'solo'
-
-##############################################################
 
 ### redis star docker ##   docker run -d -p 6379:6379 redis
 
+
 ### pentru a porni celery pe windows
+
 # celery -A Magazin worker --loglevel=info --pool=solo
 #pentru a porni best 
 ### celery -A Magazin beat -l INFO 
@@ -235,6 +219,7 @@ REDIS_PORT = '6379'
 
 # Construirea URL-ului cu utilizatorul implicit
 REDIS_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+# REDIS_URL = f'redis://:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/0'
 
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL

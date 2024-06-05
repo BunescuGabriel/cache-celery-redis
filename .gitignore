@@ -9,6 +9,7 @@ media/
 staticfiles/
 static/
 
+
 # Fișiere și directoare generate de IDEs și editors
 .vscode/
 .idea/
@@ -26,3 +27,5 @@ static/
 # Altele
 venv/
 .DS_Store
+
+Magazin/production.py
