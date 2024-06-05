@@ -1,0 +1,28 @@
+# Fișiere și directoare generate de Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.magazin2
+media/
+staticfiles/
+static/
+
+# Fișiere și directoare generate de IDEs și editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+*.bak
+*.vssettings
+*.orig
+
+# Altele
+venv/
+.DS_Store

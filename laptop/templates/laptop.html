@@ -6,6 +6,7 @@
     <title>List of Phones</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/magaz.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/search.css' %}">
     <script src="{% static 'js/add_cart.js' %}"></script>
 
 </head>
@@ -14,6 +15,24 @@
         <h1>List of Laptop</h1>
         {% include 'header.html' %}
     </header>
+
+    <div class="search-telefon">
+        <form method="GET" action="{% url 'searchLaptop' %}">
+            <div class="field-search">
+                <div class="control-search">
+                    <input class="input-search" type="text" placeholder="Find a telefon" name="q">
+                    <button class="button is-info-search">Search</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    {% if request.GET.q %}
+        <p class="mesaj-search">
+        După căutarea '{{ request.GET.q }}' au fost găsite {{ laptops|length }} produse.
+        </p>
+    {% endif %}
 
     <div class="container-telefon">
         {% for laptop in laptops %}

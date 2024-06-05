@@ -2,13 +2,14 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from .documents import TelefonDocument
 from .models import Telefon, CartItem, Payment
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.views.decorators.cache import cache_page
 from django.core.cache import cache
-
+from elasticsearch_dsl.query import MultiMatch, Wildcard
 
 
 @cache_page(60*5, cache='default')
@@ -16,12 +17,37 @@ def telefon(request):
     telefons = Telefon.objects.all()
     template = loader.get_template('home.html')
     context = {
-        'telefons' : telefons,
+        'telefons': telefons,
     }
     return HttpResponse(template.render(context, request))
 
+
 def about(request):
     return render(request, 'about.html')
+
+
+def search(request):
+    q = request.GET.get("q")
+    context = {}
+    if q:
+        s = TelefonDocument.search().query(
+            MultiMatch(query=q, fields=['model', 'producator', 'procesor', 'descriere'], fuzziness='AUTO')
+            |
+            Wildcard(model=q.lower() + '*')
+            |
+            Wildcard(producator=q.lower() + '*')
+            |
+            Wildcard(procesor=q.lower() + '*')
+            |
+            Wildcard(descriere=q.lower() + '*')
+        )
+        context["telefons"] = s.to_queryset()
+    else:
+        context["telefons"] = Telefon.objects.all()
+    return render(request, 'home.html', context)
+
+
+
 
 
 

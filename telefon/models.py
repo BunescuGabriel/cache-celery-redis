@@ -4,7 +4,6 @@ from decimal import Decimal
 from django.utils import timezone
 
 
-
 class Telefon(models.Model):
     model = models.CharField(max_length=200)
     anul = models.DateTimeField(auto_now_add=True)

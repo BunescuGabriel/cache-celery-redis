@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django_celery_results",
     'laptop',
     'django_celery_beat',
+    'django_elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,13 @@ DATABASES = {
     }
 }
 
+ELASTICSEARCH_DSL={
+    'default': {
+        # 'hosts': 'localhost:9200',
+        'hosts': 'http://localhost:9200'
+    }
+}
+
 # CACHES dictionary which contains caching configurations.
 CACHES = {
     "default": {
@@ -98,11 +106,11 @@ CACHES = {
         
          # caches in baza de date.
          
-        # "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
 
-        # "LOCATION": "my_cache_table",
+        "LOCATION": "my_cache_table",
         
-        #comanta in terminal pentru a crea tabelul in baza de date 
+        # comanta in terminal pentru a crea tabelul in baza de date
         # # python manage.py createcachetable
         
         ##################################
@@ -126,13 +134,13 @@ CACHES = {
         
         ##########
         
-        'BACKEND': 'django_redis.cache.RedisCache',
-         # Adresa și portul Redis, precum și numărul bazei de date
-        'LOCATION': 'redis://redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com:10923/Free-db',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-            'PASSWORD': 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd',  # Parola pentru autentificare   
-        }  
+        # 'BACKEND': 'django_redis.cache.RedisCache',
+        #  # Adresa și portul Redis, precum și numărul bazei de date
+        # 'LOCATION': 'redis://redis-10923.c328.europe-west3-1.gce.redns.redis-cloud.com:10923/Free-db',
+        # 'OPTIONS': {
+        #     'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        #     'PASSWORD': 'p2pCqetwaXmnBdn9cJXQt99hK8EXDxfd',  # Parola pentru autentificare
+        # }
     }
 }
 

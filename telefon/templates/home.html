@@ -6,46 +6,66 @@
     <title>List of Phones</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/magaz.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magazin/search.css' %}">
     <script src="{% static 'js/add_cart.js' %}"></script>
-
 </head>
 <body>
     <header>
         <h1>List of Phones</h1>
         {% include 'header.html' %}
     </header>
+    <div class="search-telefon">
+        <form method="GET" action="{% url 'search' %}">
+            <div class="field-search">
+                <div class="control-search">
+                    <input class="input-search" type="text" placeholder="Find a telefon" name="q">
+                    <button class="button is-info-search">Search</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    {% if request.GET.q %}
+        <p class="mesaj-search">
+        După căutarea '{{ request.GET.q }}' au fost găsite {{ telefons|length }} produse.
+        </p>
+    {% endif %}
+
+
 
     <div class="container-telefon">
-        {% for telefon in telefons %}
-        <div class="phone">
-            <div class="details">
-                <h3>{{ telefon.model }}</h3>
-                <p>Producător: {{ telefon.producator }}</p>
-                <p>Procesor: {{ telefon.procesor }}</p>
-                <p>Descriere: {{ telefon.descriere }}</p>
-                <p>Price: {{ telefon.price }} €</p>
-            </div>
-            <div class="images">
-                {% if telefon.images_set.all %}
-                <div class="image-gallery">
-                    {% for image in telefon.images_set.all %}
-                        <img src="{{ image.image.url }}" alt="Imagine Telefon">
-                    {% endfor %}
+        {% if telefons %}
+            {% for telefon in telefons %}
+                <div class="phone">
+                    <div class="details">
+                        <h3>{{ telefon.model }}</h3>
+                        <p>Producător: {{ telefon.producator }}</p>
+                        <p>Procesor: {{ telefon.procesor }}</p>
+                        <p>Descriere: {{ telefon.descriere }}</p>
+                        <p>Price: {{ telefon.price }} €</p>
+                    </div>
+                    <div class="images">
+                        {% if telefon.images_set.all %}
+                            <div class="image-gallery">
+                                {% for image in telefon.images_set.all %}
+                                    <img src="{{ image.image.url }}" alt="Imagine Telefon">
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p>Nu există imagini disponibile pentru acest telefon.</p>
+                        {% endif %}
+                        <ul>
+                            <button class="button-adaug" data-quantity="1" onclick="addToCart({{ telefon.id }}, this)">Adauga in cos</button>
+                        </ul>
+                    </div>
                 </div>
-                {% else %}
-                <p>Nu există imagini disponibile pentru acest telefon.</p>
-                {% endif %}
-                <ul>
-                    <button class="button-adaug" data-quantity="1" onclick="addToCart({{ telefon.id }}, this)">Adauga in cos</button>
-                </ul>
-            </div>
-        </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
 
     <footer>
         {% include 'footer.html' %}
     </footer>
-
 </body>
 </html>
